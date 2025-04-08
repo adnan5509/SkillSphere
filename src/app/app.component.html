@@ -5,8 +5,8 @@
 
   <app-auth />
 
-  <p *appAuth="'admin'">Only for Admin Users!</p>
-  <p *appAuth="'user'">Only for Regular Users!</p>
-  <p *appAuth="'guest'">Only for Guests!</p>
+  <p *appAuth="'admin'" class="protected-content admin">Only for Admin Users!</p>
+  <p *appAuth="'user'" class="protected-content authenticated">Only for Regular Users!</p>
+  <p *appAuth="'guest'" class="protected-content unauthenticated">Only for Guests!</p>
 
 </main>
