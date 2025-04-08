@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 @Directive({
   selector: 'a[appSafeLink]',
@@ -9,6 +9,8 @@ import { Directive } from '@angular/core';
 })
 export class SafeLinkDirective {
 
+  @Input() queryParam: string = 'skill-sphere';
+
   constructor() {
   }
 
@@ -17,6 +19,10 @@ export class SafeLinkDirective {
     const confirmation = confirm('Are you sure you want to leave this page?');
     if (!confirmation) {
       $event.preventDefault();
+    } else {
+      const href = ($event.target as HTMLAnchorElement).href;
+      ($event.target as HTMLAnchorElement).href = href + '?from=' + this.queryParam;
+      return;
     }
   }
 
