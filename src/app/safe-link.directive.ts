@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({
   selector: 'a[appSafeLink]',
@@ -11,7 +11,8 @@ export class SafeLinkDirective {
 
   @Input() queryParam: string = 'skill-sphere';
 
-  constructor() {
+  constructor(private hostElementRef: ElementRef<HTMLAnchorElement>) {
+
   }
 
   onConfirmLeavePage($event: MouseEvent) {
@@ -20,8 +21,8 @@ export class SafeLinkDirective {
     if (!confirmation) {
       $event.preventDefault();
     } else {
-      const href = ($event.target as HTMLAnchorElement).href;
-      ($event.target as HTMLAnchorElement).href = href + '?from=' + this.queryParam;
+      const href = this.hostElementRef.nativeElement.href;
+      this.hostElementRef.nativeElement.href = href + '?from=' + this.queryParam;
       return;
     }
   }
