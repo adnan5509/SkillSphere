@@ -4,4 +4,10 @@
   <hr />
 
   <app-auth />
+
+  <p *ngIf="isAdmin(); else notAdmin">Only for Admin Users!</p>
+
+  <ng-template #notAdmin>
+    <p>You do not have admin access.</p>
+  </ng-template>
 </main>
