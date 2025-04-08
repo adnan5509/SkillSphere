@@ -11,9 +11,7 @@ export class SafeLinkDirective {
 
   @Input() queryParam: string = 'skill-sphere';
 
-  constructor(private hostElementRef: ElementRef<HTMLAnchorElement>) {
-
-  }
+  constructor(private hostElementRef: ElementRef<HTMLAnchorElement>) {}
 
   onConfirmLeavePage($event: MouseEvent) {
 
